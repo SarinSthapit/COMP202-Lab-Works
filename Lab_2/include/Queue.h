@@ -12,7 +12,7 @@ public:
     virtual void enqueue(T value) = 0;
     virtual T dequeue() = 0;
     virtual T getFront() =0;
-    virtual T getRear() = 0;
+    virtual T getBack() = 0;
     virtual void display(char separator = ' ') = 0;
 };
 
@@ -23,15 +23,15 @@ class ArrayQueue : public Queue <T>
 private:
     T size;
     T * data;
-    T rear;
+    T back;
     T front;
 
 
 public:
-    ArrayQueue(int size): size(size), data(new T[size]), rear(-1), front(-1){}
+    ArrayQueue(int size): size(size), data(new T[size]), back(-1), front(-1){}
 
     bool isEmpty(){
-        if(front == rear ==-1){
+        if(front == back ==-1){
             return true;
         }
         else{
@@ -40,7 +40,7 @@ public:
     }
 
     bool isFull(){
-        if(rear = size -1){
+        if(back = size -1){
             return true;
         }
         else{
@@ -50,12 +50,12 @@ public:
 
 
     void enqueue(T value){
-        if(rear == size -1){
+        if(back == size -1){
             std ::cout << "The Queue is full." << std :: endl;
         }
         else {
-            rear++;
-            data[rear] = value;
+            back++;
+            data[back] = value;
             std :: cout << "Inserted Element: " << value << std :: endl;
         }
     }
@@ -73,30 +73,20 @@ public:
     }
 
     T getFront(){
-        if(front == -1){
-            std :: cout << "The Queue is empty" << std :: endl;
-        }
-        else{
-            return data[front];
-        }
+        return data[front + 1];
     }
 
-    T getRear(){
-        if(front == -1){
-            std ::cout << "The Queue is empty" << std ::endl;
-        }
-        else{
-            return data[rear];
-        }
+    T getBack(){
+        return data[back];
     }
 
     void display(char separator = ' '){
-        if(front == rear == -1){
+        if(front == back == -1){
             std :: cout << "The Queue is empty" << std ::endl;
         }
         else{
             std :: cout << "Queue:" << std :: endl;
-            for(int i= 0; i<=rear; i++){
+            for(int i= 0; i<=back; i++){
                 std :: cout << data[i] << separator;
             }
         }

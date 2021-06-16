@@ -10,7 +10,7 @@ public:
     virtual bool isFull() = 0;
     virtual void push(T value) = 0;
     virtual T pop() = 0;
-    virtual T peek() =0;
+    virtual T top() =0;
     virtual T getRear() = 0;
     virtual void display(char separator = ' ') = 0;
 };
@@ -70,22 +70,12 @@ public:
         }
     }
 
-    T peek(){
-        if(front == -1){
-            std :: cout << "The Stack is empty" << std :: endl;
-        }
-        else{
-            return data[front];
-        }
+    T top(){
+        return data[front + 1];
     }
 
     T getRear(){
-        if(front == -1){
-            std ::cout << "The Stack is empty" << std ::endl;
-        }
-        else{
-            return data[rear];
-        }
+        return data[rear];
     }
 
     void display(char separator = ' '){

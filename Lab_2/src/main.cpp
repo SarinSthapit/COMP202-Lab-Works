@@ -18,6 +18,9 @@ int main(){
     intStack->display(',');
 
     intStack->pop();
+
+    std :: cout << "TOP: ";
+    std :: cout << intStack->top() << std :: endl;
     intStack->display(',');
 
     std :: cout << std :: endl;
@@ -36,6 +39,12 @@ int main(){
     intQueue->enqueue(99);
 
     intQueue -> display(',');
+
+    std :: cout << "FRONT: ";
+    std :: cout << intQueue -> getFront() << std :: endl;
+
+    std :: cout << "BACK: ";
+    std :: cout << intQueue -> getBack() << std :: endl;
 
     intQueue -> dequeue();
     intQueue -> display(','); 
