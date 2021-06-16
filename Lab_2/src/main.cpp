@@ -28,7 +28,7 @@ int main(){
     
     std :: cout << "QUEUE OPERATIONS:" << std :: endl;
     Queue <int> *intQueue = new ArrayQueue<int>(15);
-    intQueue->enqueue(22);
+    intQueue->enqueue(220);
     intQueue->enqueue(23);
     intQueue->enqueue(24);
     intQueue->enqueue(56);
