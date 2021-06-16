@@ -6,12 +6,6 @@ template <typename T>
 class Queue
 {
 
-private:
-    T size;
-    T * data;
-    T rear;
-    T front;
-
 public:
     virtual bool isEmpty() = 0;
     virtual bool isFull() = 0;
@@ -25,6 +19,14 @@ public:
 template <typename T>
 class ArrayQueue : public Queue <T>
 {
+
+private:
+    T size;
+    T * data;
+    T rear;
+    T front;
+
+
 public:
     ArrayQueue(int size): size(size), data(new T[size]), rear(-1), front(-1){}
 
@@ -58,14 +60,15 @@ public:
         }
     }
 
-    T pop(){
+    T dequeue(){
         if(isEmpty()){
             std :: cout << "The Queue is empty" << std :: endl;
         }
         else{
-            std::cout << "Removed Element: " << data[front] << std::endl;
-            data[front] = 0;
-            front++;
+            int i =0;
+            std::cout << "Removed Element: " << data[i] << std::endl;
+            data[i] = 0;
+            i++;
         }
     }
 
@@ -88,18 +91,17 @@ public:
     }
 
     void display(char separator = ' '){
-        if(front == -1){
+        if(front == rear == -1){
             std :: cout << "The Queue is empty" << std ::endl;
         }
         else{
             std :: cout << "Queue:" << std :: endl;
-            for(int i= 0; i<size; i++){
+            for(int i= 0; i<=rear; i++){
                 std :: cout << data[i] << separator;
             }
         }
-
+    std :: cout << std :: endl;
     }
 
 };
-
-
+ 

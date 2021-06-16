@@ -5,12 +5,6 @@ template <typename T>
 class Stack
 {
 
-private:
-    T size;
-    T * data;
-    T rear;
-    T front;
-
 public:
     virtual bool isEmpty() = 0;
     virtual bool isFull() = 0;
@@ -24,6 +18,14 @@ public:
 template <typename T>
 class ArrayStack : public Stack <T>
 {
+
+private:
+    T size;
+    T * data;
+    T rear;
+    T front;
+
+
 public:
     ArrayStack(int size): size(size), data(new T[size]), rear(-1), front(-1){}
 
@@ -87,16 +89,16 @@ public:
     }
 
     void display(char separator = ' '){
-        if(front == -1){
+        if(front == rear == -1){
             std :: cout << "The Stack is empty" << std ::endl;
         }
         else{
             std :: cout << "Stack:" << std :: endl;
-            for(int i= 0; i<size; i++){
+            for(int i= 0; i<=rear; i++){
                 std :: cout << data[i] << separator;
             }
         }
-
+    std :: cout << std :: endl;
     }
 
 };
