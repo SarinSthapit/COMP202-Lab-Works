@@ -15,14 +15,10 @@ public:
 };
 
 template <typename T>
-class ArrayStack : public <T> Stack
+class ArrayStack : public Stack <T>
 {
 public:
-    ArrayStack(int size){
-        this->size = size;
-        front = -1;
-        rear - -1;
-    }
+    ArrayStack(int size): size(size), data(new T[size]), rear(-1), front(-1){}
 
     bool isEmpty(){
         if(front == rear){
@@ -44,13 +40,13 @@ public:
 
 
     void push(T value){
-        if(!isFull()){
+        if(rear == size -1){
+            std ::cout << "The Stack is full." << std :: endl;
+        }
+        else {
             rear++;
             data[rear] = value;
             std :: cout << "Inserted Element: " << value << std :: endl;
-        }
-        else {
-            std ::cout << "The Stack is empty." << std :: endl;
         }
     }
 
@@ -85,9 +81,9 @@ public:
             std :: cout << "The Stack is empty" << std ::endl;
         }
         else{
-            std : cout << "Stack:" << std :: endl;
+            std :: cout << "Stack:" << std :: endl;
             for(int i= 0; i<size; i++){
-                std ::cout << data[i] << separator;
+                std :: cout << data[i] << separator;
             }
         }
 
