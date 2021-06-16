@@ -4,6 +4,13 @@
 template <typename T>
 class Stack
 {
+
+private:
+    T size;
+    T * data;
+    T rear;
+    T front;
+
 public:
     virtual bool isEmpty() = 0;
     virtual bool isFull() = 0;
@@ -21,7 +28,7 @@ public:
     ArrayStack(int size): size(size), data(new T[size]), rear(-1), front(-1){}
 
     bool isEmpty(){
-        if(front == rear){
+        if(front == rear == -1){
             return true;
         }
         else{
@@ -55,9 +62,9 @@ public:
             std :: cout << "The Stack is empty" << std :: endl;
         }
         else{
-            std::cout << "Removed Element: " << data[front] << std::endl;
-            data[front] = 0;
-            front++;
+            std::cout << "Removed Element: " << data[rear] << std::endl;
+            data[rear] = 0;
+            rear++;
         }
     }
 
@@ -74,6 +81,9 @@ public:
         if(front == -1){
             std ::cout << "The Stack is empty" << std ::endl;
         }
+        else{
+            return data[rear];
+        }
     }
 
     void display(char separator = ' '){
@@ -88,11 +98,5 @@ public:
         }
 
     }
-
-private:
-    T size;
-    T * data;
-    T rear;
-    T front;
 
 };
