@@ -11,7 +11,7 @@ Queue :: Queue(int maxQueueSize)
 }
 
 bool Queue :: isEmpty(){
-    if(front == rear && n%maxQueueSize == 0){
+    if(n==0){
         return true;
     }
     else{
@@ -66,13 +66,12 @@ int Queue :: getn(){
 }
 
 void Queue :: display (char separator){
-    std :: cout << data[0] << "and" << data[1];
     if(isEmpty()){
         std :: cout << "The Queue is empty." << std :: endl;
     }
     
-    if (rear < front){
-        std :: cout << "Circular Queuea:" << std :: endl;
+    else if (rear < front){
+        std :: cout << "Circular Queue:" << std :: endl;
         int i;
         for (i = front+1; i< maxQueueSize; i++){
             std :: cout << data[i] << separator;
@@ -84,11 +83,12 @@ void Queue :: display (char separator){
         std :: cout << std :: endl;
     }
     else if (front == rear){
+        std :: cout << "Circular Queue:" << std :: endl;
         for(int i = front+1; i<maxQueueSize ;i++){std :: cout << data[i]<<separator;}
         for(int j= 0; j<=front;j++){std :: cout << data[j] << separator;}
     }
     else{
-        std :: cout << "Circular Queueb:" << std :: endl;
+        std :: cout << "Circular Queue:" << std :: endl;
         int k;
         for (k = front+1; k<=rear; k++){
             std :: cout << data [k] << separator;
