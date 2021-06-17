@@ -18,7 +18,7 @@ public:
     int maxQueueSize;
     int front;
     int rear;
-    int n;
+    int n; // number of elements present in the queue
 
     int *data;
 };
