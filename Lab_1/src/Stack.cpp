@@ -3,7 +3,7 @@
 
 bool LinkedListStack :: isEmpty()
 {
-    list.isEmpty();
+    return list.isEmpty();
 }
 
 

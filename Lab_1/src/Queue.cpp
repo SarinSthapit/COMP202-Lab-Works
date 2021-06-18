@@ -9,7 +9,7 @@ bool LinkedListQueue :: isEmpty()
 
 void LinkedListQueue :: enqueue(int data)
 {
-    list.addToTail(data);
+    return list.addToTail(data);
 }
 
 

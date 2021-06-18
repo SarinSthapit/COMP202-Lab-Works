@@ -6,7 +6,7 @@ public:
     int info;
     Node *next;
 
-    Node() : next(nullptr){}
+    Node():next(nullptr){}
     Node(int info, Node *next): info(info), next(next){}
 
      
@@ -31,9 +31,7 @@ public:
 
     Node getHead();
     Node getTail();
-    //Node getNode();
-
-
+   
 private: 
     Node * HEAD;
     Node * TAIL;

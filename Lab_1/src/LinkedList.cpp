@@ -22,6 +22,7 @@ void LinkedList::addToHead(int data){
     {
         TAIL = HEAD;
     }
+    std::cout << "Added to head: " << data << std::endl;
 }
 
 
@@ -39,19 +40,16 @@ void LinkedList::addToTail(int data){
         TAIL->next = newNode;
         TAIL = TAIL->next;
     }
+    std::cout << "Added to tail: " << data << std::endl;
 }
 
 
 void LinkedList::add(int data, Node *predecessor){
-
-    std :: cout << predecessor -> next << std :: endl;
     Node *newNode = new Node;
     newNode -> info = data;
     newNode -> next = predecessor -> next;
     predecessor -> next = newNode;
-    std :: cout << predecessor->info << "," << predecessor -> next << std :: endl;
-    std :: cout << newNode->info << "," << newNode -> next << std :: endl;
-    std :: cout << newNode -> next -> info << std :: endl;
+    std::cout << "Added: " << data << std::endl;
 }
 
 
@@ -69,12 +67,12 @@ int LinkedList::removeFromHead(){
         {
             TAIL = nullptr;
         }
-
+        std::cout << "Removed from head: " << data << std::endl;
         return data;
     }  
     else 
     {
-        std :: cout << "The list is empty. removed from head" << std :: endl;
+        std::cout << "The list is empty." << std::endl;
         return 0;
     }
 }
@@ -100,12 +98,13 @@ int LinkedList :: removeFromTail(){
             TAIL = secondlastNode;
             secondlastNode -> next = NULL;
         }
+        std::cout << "Removed from tail: " << nodeToDelete -> info << std::endl;
         return nodeToDelete -> info;
         delete nodeToDelete;
     }
 
     else{
-        std::cout<<"The list is empty. removed from tail"<<std::endl;
+        std::cout << "The list is empty." << std::endl;
         return 0;
     }
 
@@ -130,11 +129,11 @@ void LinkedList :: remove(int data){
     }
 
     if(current == NULL){
-        std :: cout << "Data not found." << std :: endl;         
+        std::cout << "Data not found." << std::endl;         
     }
 
     else{
-        std :: cout << "Removed from the Linked List: " << current -> info << std :: endl;
+        std::cout << "Removed from the Linked List: " << current -> info << std::endl;
         previous -> next = current -> next;
         delete current; 
     }
@@ -149,8 +148,8 @@ Node *LinkedList::retrieve(int data, Node *outputNodePointer){
         temp = temp -> next;
     }
 
-    if(temp==NULL){
-        std:: cout << data << " is not present." << std :: endl;
+    if(temp == NULL){
+        std::cout << data << " is not present." << std::endl;
     }
 
     else{
@@ -167,7 +166,7 @@ bool LinkedList::search(int data){
 
         while(newNode -> next != NULL){
             if(newNode -> info == data){
-                std:: cout << "The searched data " << data << " is present in the list." << std :: endl;
+                std::cout << "The searched data, " << data << " is present in the list." << std::endl;
                 return true;
             }
 
@@ -175,7 +174,7 @@ bool LinkedList::search(int data){
                 newNode = newNode -> next;
             }
         }
-        std:: cout << "The searched data " << data << " is not present in the list." << std :: endl;
+        std::cout << "The searched data, " << data << " is not present in the list." << std::endl;
         return false;
     }
 }
@@ -183,7 +182,7 @@ bool LinkedList::search(int data){
 
 void LinkedList::traverse(char separator){
     if(isEmpty()){
-        std::cout<<"The list is empty. traversed"<<std::endl;
+        std::cout << "The list is empty." << std::endl;
     }
 
     else{
@@ -194,7 +193,7 @@ void LinkedList::traverse(char separator){
             temp = temp -> next;
         }
     }
-    std::cout<<std::endl;
+    std::cout << std::endl;
 }
 
 Node LinkedList :: getHead(){
