@@ -21,12 +21,14 @@ public:
     bool isEmpty();
     void insertion(int data, Node *predecessor);
     void deletion(int data);
-    Node retrieve(int data, Node *outputNodePointer);
+    Node *retrieve(int data, Node *outputNodePointer);
     bool search(int data);
     void traverse(char separator = ' ');
 
     Node getHead();
     Node getTail();
+
+    void addToHead(int data);
 
 
 private: 

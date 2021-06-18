@@ -54,7 +54,7 @@ void doublyLinkedList :: deletion(int data){
 }
 
 
-Node doublyLinkedList :: retrieve(int data, Node *outputNodePointer){
+Node *doublyLinkedList :: retrieve(int data, Node *outputNodePointer){
     Node *temp = new Node;
     temp = HEAD;
     while(temp != NULL && temp -> info != data){
@@ -67,7 +67,7 @@ Node doublyLinkedList :: retrieve(int data, Node *outputNodePointer){
 
     else{
         outputNodePointer = temp;
-        return *outputNodePointer;
+        return outputNodePointer;
     }
 }
 
@@ -122,4 +122,16 @@ Node doublyLinkedList :: getHead(){
 
 Node doublyLinkedList :: getTail(){
     return *TAIL;
+}
+
+void doublyLinkedList::addToHead(int data){
+    Node *newNode = new Node;
+    newNode -> info = data;
+    newNode -> next = HEAD;
+    HEAD -> prev = newNode;
+    HEAD = newNode;
+    if (TAIL == nullptr)
+    {
+        TAIL = HEAD;
+    }
 }

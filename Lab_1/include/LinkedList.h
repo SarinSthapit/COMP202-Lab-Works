@@ -25,12 +25,13 @@ public:
     int removeFromHead();
     int removeFromTail();
     void remove(int data);
-    Node retrieve(int data, Node *outputNodePointer);
+    Node *retrieve(int data, Node *outputNodePointer);
     bool search(int data);
     void traverse(char separator = ' ');
 
     Node getHead();
     Node getTail();
+    //Node getNode();
 
 
 private: 

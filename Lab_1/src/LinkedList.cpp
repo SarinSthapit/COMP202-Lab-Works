@@ -43,12 +43,15 @@ void LinkedList::addToTail(int data){
 
 
 void LinkedList::add(int data, Node *predecessor){
+
+    std :: cout << predecessor -> next << std :: endl;
     Node *newNode = new Node;
     newNode -> info = data;
     newNode -> next = predecessor -> next;
     predecessor -> next = newNode;
     std :: cout << predecessor->info << "," << predecessor -> next << std :: endl;
     std :: cout << newNode->info << "," << newNode -> next << std :: endl;
+    std :: cout << newNode -> next -> info << std :: endl;
 }
 
 
@@ -139,7 +142,7 @@ void LinkedList :: remove(int data){
 } 
 
 
-Node LinkedList::retrieve(int data, Node *outputNodePointer){
+Node *LinkedList::retrieve(int data, Node *outputNodePointer){
     Node *temp = new Node;
     temp = HEAD;
     while(temp != NULL && temp -> info != data){
@@ -152,7 +155,7 @@ Node LinkedList::retrieve(int data, Node *outputNodePointer){
 
     else{
         outputNodePointer = temp;
-        return *outputNodePointer;
+        return outputNodePointer;
     }
 }
 
