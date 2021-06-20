@@ -1,34 +1,31 @@
 #pragma once
 #include <iostream>
 
-
-template <typename T>
 class Queue
 {
 
 public:
     virtual bool isEmpty() = 0;
     virtual bool isFull() = 0;
-    virtual void enqueue(T value) = 0;
-    virtual T dequeue() = 0;
-    virtual T getFront() =0;
-    virtual T getBack() = 0;
+    virtual void enqueue(int value) = 0;
+    virtual int dequeue() = 0;
+    virtual int getFront() =0;
+    virtual int getBack() = 0;
     virtual void display(char separator = ' ') = 0;
 };
 
-template <typename T>
-class ArrayQueue : public Queue <T>
+class ArrayQueue : public Queue
 {
 
 private:
-    T size;
-    T * data;
-    T back;
-    T front;
+    int size;
+    int * data;
+    int back;
+    int front;
 
 
 public:
-    ArrayQueue(int size): size(size), data(new T[size]), back(-1), front(-1){}
+    ArrayQueue(int size): size(size), data(new int[size]), back(-1), front(-1){}
 
     bool isEmpty(){
         if(front == back ==-1){
@@ -49,7 +46,7 @@ public:
     }
 
 
-    void enqueue(T value){
+    void enqueue(int value){
         if(back == size -1){
             std ::cout << "The Queue is full." << std :: endl;
         }
@@ -60,7 +57,7 @@ public:
         }
     }
 
-    T dequeue(){
+    int dequeue(){
         if(isEmpty()){
             std :: cout << "The Queue is empty" << std :: endl;
         }
@@ -72,11 +69,11 @@ public:
         }
     }
 
-    T getFront(){
+    int getFront(){
         return data[front + 1];
     }
 
-    T getBack(){
+    int getBack(){
         return data[back];
     }
 
@@ -86,7 +83,7 @@ public:
         }
         else{
             std :: cout << "Queue:" << std :: endl;
-            for(int i= front+1; i<=back; i++){
+            for(int i= 0; i<=back; i++){
                 std :: cout << data[i] << separator;
             }
         }

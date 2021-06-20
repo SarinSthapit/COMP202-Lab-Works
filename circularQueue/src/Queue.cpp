@@ -3,7 +3,7 @@
 
 Queue :: Queue(int maxQueueSize)
 {
-    //data = new int[maxQueueSize];
+    data = new int[maxQueueSize];
     front = -1;
     rear = -1;
     this -> maxQueueSize = maxQueueSize;
@@ -54,11 +54,11 @@ int Queue :: dequeue(){
 }
 
 int Queue :: getFront(){
-    return front;
+    return data[front+1];
 }
 
 int Queue :: getRear(){
-   return rear;
+   return data[rear];
 }
 
 int Queue :: getn(){
@@ -70,7 +70,7 @@ void Queue :: display (char separator){
         std :: cout << "The Queue is empty." << std :: endl;
     }
     
-    else if (rear < front){
+    /* else if (rear < front){
         std :: cout << "Circular Queue:" << std :: endl;
         int i;
         for (i = front+1; i< maxQueueSize; i++){
@@ -86,15 +86,14 @@ void Queue :: display (char separator){
         std :: cout << "Circular Queue:" << std :: endl;
         for(int i = front+1; i<maxQueueSize ;i++){std :: cout << data[i]<<separator;}
         for(int j= 0; j<=front;j++){std :: cout << data[j] << separator;}
-    }
+    } */
     else{
-        std :: cout << "Circular Queue:" << std :: endl;
-        int k;
-        for (k = front+1; k<=rear; k++){
-            std :: cout << data [k] << separator;
+        int i, j;
+        for (i = 0, j = (front + 1) % maxQueueSize; i < n; i++) {
+            std :: cout << data[j] << separator;
+            j = (j + 1) % maxQueueSize;
         }
-        std :: cout << std :: endl;
-        std :: cout << std :: endl;
+         std :: cout << std :: endl;
 
     }
 

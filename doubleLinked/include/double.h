@@ -12,7 +12,6 @@ public:
      
 };
 
-
 class doublyLinkedList{
 
 public:
@@ -29,7 +28,6 @@ public:
     Node getTail();
 
     void addToHead(int data);
-
 
 private: 
     Node * HEAD;

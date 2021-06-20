@@ -47,6 +47,8 @@ int main(){
     std :: cout << intQueue -> getBack() << std :: endl;
 
     intQueue -> dequeue();
+    intQueue -> dequeue();
+    intQueue -> dequeue();
     intQueue -> display(','); 
     
     

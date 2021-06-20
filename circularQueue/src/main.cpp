@@ -8,8 +8,6 @@ int main(){
     q.enqueue(2);
     q.enqueue(3);
     q.enqueue(4);
-   
-    std :: cout << q.dequeue();
 
     std :: cout << "FRONT = ";
     std :: cout << q.getFront() << std :: endl;
@@ -17,9 +15,11 @@ int main(){
     std :: cout << "REAR = ";
     std :: cout << q.getRear() << std :: endl; 
 
-    std :: cout << q.dequeue();
     q.display(',');
 
+    q.dequeue();
+    q.dequeue();
+    q.dequeue();
     q.dequeue();
     q.dequeue();
 
