@@ -1,3 +1,14 @@
+/*
+Submitted By:
+Sarin Sthapit
+Roll No.: 55
+Group: Computer Engineering             Level: Undergraduate
+       (Year II / Semester I)
+Subject: COMP 202 (Data Structures and Algorithms)
+
+Lab Work 1
+*/
+
 #include <iostream>
 #include "LinkedList.h"
 
@@ -14,9 +25,7 @@ bool LinkedList::isEmpty(){
 
 
 void LinkedList::addToHead(int data){
-    Node *newNode = new Node;
-    newNode -> info = data;
-    newNode -> next = HEAD;
+    Node *newNode = new Node(data, HEAD);
     HEAD = newNode;
     if (TAIL == nullptr)
     {
@@ -27,9 +36,7 @@ void LinkedList::addToHead(int data){
 
 
 void LinkedList::addToTail(int data){
-    Node *newNode = new Node;
-    newNode -> info = data;
-    newNode -> next = NULL;
+    Node *newNode = new Node(data, NULL);
     if(HEAD == nullptr)
     {
         HEAD = newNode;
@@ -45,9 +52,7 @@ void LinkedList::addToTail(int data){
 
 
 void LinkedList::add(int data, Node *predecessor){
-    Node *newNode = new Node;
-    newNode -> info = data;
-    newNode -> next = predecessor -> next;
+    Node *newNode = new Node(data, predecessor->next);
     predecessor -> next = newNode;
     std::cout << "Added: " << data << std::endl;
 }

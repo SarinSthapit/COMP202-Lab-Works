@@ -1,3 +1,14 @@
+/*
+Submitted By:
+Sarin Sthapit
+Roll No.: 55
+Group: Computer Engineering             Level: Undergraduate
+       (Year II / Semester I)
+Subject: COMP 202 (Data Structures and Algorithms)
+
+Lab Work 1
+*/
+
 #include <iostream>
 #include "LinkedList.h"
 #include "Stack.h"
@@ -75,6 +86,7 @@ int main()
     s.push(55);
     s.push(56);
     s.push(58);
+    std :: cout << "TOP: " <<  s.peek() << std :: endl;
 
     std::cout << std::endl;
 
@@ -87,7 +99,8 @@ int main()
     s.display(',');
     std::cout << "TOP: " <<  s.peek() << std::endl;
 
-    std::cout << "Deleted from Stack: " << s.pop() << ", " << s.pop() << std::endl;
+    s.pop();
+    s.pop();
 
     std::cout << std::endl;
 
@@ -141,6 +154,8 @@ int main()
     q2.enqueue(300);
     q2.enqueue(1900);
     q2.enqueue(2100);
+    std :: cout << "FRONT: " <<  q2.front() << std :: endl;
+    std :: cout << "REAR: " <<  q2.rear() << std :: endl;
 
 
     std::cout << std::endl;
@@ -148,7 +163,8 @@ int main()
     std::cout << "USER INPUT:" << std::endl;
     std::cout << "Choose your option: " << std::endl;
     std::cout << "Linked List Operations: " << std::endl;
-    std::cout << "1. add to Head\n2. add to tail\n3. add\n4. remove from head\n5. remove from tail\n6. remove\n7. retrieve\n8. search\n9. traverse\n" << std :: endl;
+    std::cout << "1. add to Head\n2. add to tail\n3. add\n4. remove from head\n5. remove from tail\n6. remove\n7. retrieve" << std::endl;
+    std::cout << "8. search\n9. traverse\n" << std :: endl;
 
     std::cout << "Stack Operations: " << std::endl;
     std::cout << "10. push\n11. pop\n12. peek\n13. display" << std::endl;
@@ -156,12 +172,12 @@ int main()
     std::cout << std::endl;
 
     std::cout << "Queue Operations: " << std::endl;
-    std::cout << "14. enqueue\n15. dequeue\n16. display" << std::endl;
+    std::cout << "14. enqueue\n15. dequeue\n16. front\n17. rear\n18. display" << std::endl;
 
     std::cout << std::endl;
 
     std::cout << "Checking empty or not: " << std::endl;
-    std::cout << "17. For Linked List\n18. Stack\n19. Queue" << std::endl;
+    std::cout << "19. Linked List\n20. Stack\n21. Queue" << std::endl;
 
     std::cout << std::endl;
     std::cout << "Choose your option: ";
@@ -176,7 +192,8 @@ int main()
         std::cout << "Linked List: ";
         list2.traverse(',');
 
-    }else if (n==2){
+    }
+    else if (n==2){
         int num;
         std::cout << "Enter the data: ";
         std::cin >> num;
@@ -184,7 +201,8 @@ int main()
         std::cout << "Linked List: ";
         list2.traverse(',');
 
-    }else if (n==3){
+    }
+    else if (n==3){
         int num;
         int num2;
         std::cout << "Linked List: ";
@@ -203,7 +221,8 @@ int main()
         std::cout << "Linked List: ";
         list2.traverse(',');
 
-    }else if (n==4){
+    }
+    else if (n==4){
         std::cout << "Linked List (Before): ";
         list2.traverse(',');
 
@@ -213,7 +232,8 @@ int main()
         std::cout << "Linked List (After): ";
         list2.traverse(',');
         
-    }else if (n==5){
+    }
+    else if (n==5){
         std::cout << "Linked List (Before): ";
         list2.traverse(',');
 
@@ -223,7 +243,8 @@ int main()
         std::cout << "Linked List (After): ";
         list2.traverse(',');
         
-    }else if (n==6){
+    }
+    else if (n==6){
         int num;
         std::cout << "Linked List (Before): ";
         list2.traverse(',');
@@ -236,7 +257,8 @@ int main()
         std::cout << "Linked List (After): ";
         list2.traverse(',');
         
-    }else if (n==7){
+    }
+    else if (n==7){
         int num;
         std::cout << "Linked List (Before): ";
         list2.traverse(',');
@@ -251,7 +273,8 @@ int main()
         std::cout << "Linked List: ";
         list2.traverse(',');
 
-    }else if (n==8){
+    }
+    else if (n==8){
         int num;
         std::cout << "Linked List: ";
         list2.traverse(',');
@@ -260,11 +283,13 @@ int main()
         std::cin >> num;
         list2.search(num);
         
-    }else if (n==9){
+    }
+    else if (n==9){
         std::cout << "Linked List: ";
         list2.traverse(',');
         
-    }else if (n==10){
+    }
+    else if (n==10){
         int num;
         std::cout << "Stack (Before): ";
         s2.display(',');
@@ -273,20 +298,24 @@ int main()
         s2.push(num);
         s2.display(',');
 
-    }else if (n==11){
+    }
+    else if (n==11){
         std::cout << "Stack (Before): ";
         s2.display(',');
         s2.pop();
         s2.display(',');
 
-    }else if (n==12){
+    }
+    else if (n==12){
         std :: cout << "TOP: " <<  s2.peek() << std :: endl;
         s2.display(',');  
         
-    }else if (n==13){
+    }
+    else if (n==13){
         s2.display(',');
         
-    }else if (n==14){
+    }
+    else if (n==14){
         int num;
         std::cout << "Queue (Before): ";
         q2.display(',');
@@ -295,37 +324,52 @@ int main()
         q2.enqueue(num);
         q2.display(',');
 
-    }else if (n==15){
+    }
+    else if (n==15){
         std::cout << "Queue (Before): ";
         q2.display(',');
         q2.dequeue();
         q2.display(',');
         
-    }else if(n==16){
-        q2.display(',');
+    }
+    else if(n==16){
+        std :: cout << "FRONT: " <<  q2.front() << std :: endl;
+        q2.display(','); 
+        
 
-    }else if(n==17){
+    }
+    else if(n==17){
+        std :: cout << "REAR: " <<  q2.rear() << std :: endl;
+        q2.display(',');
+    }
+    else if(n==18){
+        q2.display(',');
+    }
+    else if(n==19){
         if(list2.isEmpty()){
             std::cout << "The list is empty." << std::endl;
         }else{
             std::cout << "The list is not empty." << std::endl;
         }
 
-    }else if(n==18){
+    }
+    else if(n==20){
         if(s2.isEmpty()){
             std::cout << "The stack is empty." << std::endl;
         }else{
             std::cout << "The stack is not empty." << std::endl;
         }
 
-    }else if(n==19){
+    }
+    else if(n==21){
         if(q2.isEmpty()){
             std::cout << "The queue is empty." << std::endl;
         }else{
             std::cout << "The queue is not empty." << std::endl;
         }
 
-    }else{
+    }
+    else{
         std :: cout << "Invalid Operation." << std :: endl;
     }
 
