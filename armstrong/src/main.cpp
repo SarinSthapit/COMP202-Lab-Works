@@ -22,11 +22,10 @@ int main(){
     }
 
     for(int i = 1; i <= c; i++){
-        int out = a.dequeue();
-        b = pow(out, c) + b;
+        b = pow(a.dequeue(), c) + b;
     }
 
-    if( b == n) {
+    if( b == t) {
         std::cout << "Armstrong";
     }
     else{

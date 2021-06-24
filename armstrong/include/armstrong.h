@@ -64,8 +64,7 @@ public:
         else{
             front = front + 1;
             std::cout << "Removed Element: " << data[front] << std::endl;
-            /* data[i] = 0;
-            i++; */
+            return data[front];
         }
     }
 
@@ -83,7 +82,7 @@ public:
         }
         else{
             std :: cout << "Queue:" << std :: endl;
-            for(int i= 0; i<=back; i++){
+            for(int i= front +1; i<=back; i++){
                 std :: cout << data[i] << separator;
             }
         }

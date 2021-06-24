@@ -1,31 +1,19 @@
+/*
+Submitted By:
+Sarin Sthapit
+Roll No.: 55
+Group: Computer Engineering             Level: Undergraduate
+       (Year II / Semester I)
+Subject: COMP 202 (Data Structures and Algorithms)
+
+Lab Work 2
+Question No. 2
+*/
+
 #include <iostream>
 #include "Stack.h"
-#include "Queue.h"
 
 int main(){
-    std :: cout << "STACK OPERATIONS:" << std :: endl;
-    Stack <int> *intStack = new ArrayStack<int>(10);
-    intStack->push(98);
-    intStack->push(5);
-    intStack->push(33);
-    intStack->push(25);
-    intStack->push(1);
-    intStack->push(32);
-    intStack->push(4);
-    intStack->push(5);
-    intStack->push(6);
-
-    intStack->display(',');
-
-    intStack->pop();
-
-    std :: cout << "TOP: ";
-    std :: cout << intStack->top() << std :: endl;
-    intStack->display(',');
-
-    std :: cout << std :: endl;
-    std :: cout << std :: endl;
-    
     std :: cout << "QUEUE OPERATIONS:" << std :: endl;
     Queue <int> *intQueue = new ArrayQueue<int>(15);
     intQueue->enqueue(220);
@@ -51,6 +39,7 @@ int main(){
     intQueue -> dequeue();
     intQueue -> display(','); 
     
-    
+    std :: cout << std :: endl;
+    std :: cout << std :: endl; 
     
 }

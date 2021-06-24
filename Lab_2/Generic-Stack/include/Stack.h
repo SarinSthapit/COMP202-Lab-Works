@@ -1,3 +1,15 @@
+/*
+Submitted By:
+Sarin Sthapit
+Roll No.: 55
+Group: Computer Engineering             Level: Undergraduate
+       (Year II / Semester I)
+Subject: COMP 202 (Data Structures and Algorithms)
+
+Lab Work 2
+Question No. 1
+*/
+
 #pragma once
 #include <iostream>
 
@@ -71,10 +83,12 @@ public:
     }
 
     T top(){
+        std :: cout << "TOP: ";
         return data[front + 1];
     }
 
     T getRear(){
+        std :: cout << "REAR: ";
         return data[rear];
     }
 
