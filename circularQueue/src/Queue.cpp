@@ -35,6 +35,7 @@ void Queue :: enqueue(int value){
         rear = (rear + 1) % maxQueueSize;
         data[rear] = value;
         n = n + 1;
+         std::cout << "Inserted element: " << value << std::endl;
     }
     
     else{
@@ -46,10 +47,11 @@ int Queue :: dequeue(){
    if(!isEmpty()){
         front = (front + 1) % maxQueueSize;
         n = n-1;
+        std::cout << "Removed element: " << data[front] << std::endl;
         return data[front];
     }
     else{
-        std :: cout << "The Queue is empty." << std :: endl;
+        throw"The Queue is empty.";
     } 
 }
 

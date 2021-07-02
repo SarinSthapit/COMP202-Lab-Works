@@ -16,18 +16,23 @@ class doublyLinkedList{
 
 public:
     doublyLinkedList();
+    Node *getHead();
+    Node *getTail();
 
     bool isEmpty();
     void insertion(int data, Node *predecessor);
+    void insertionLeft(int data, Node *successor);
+    void addToHead(int data);
+    void addToTail(int data);
+    int removeFromHead();
+    int removeFromTail();
     void deletion(int data);
     Node *retrieve(int data, Node *outputNodePointer);
     bool search(int data);
-    void traverse(char separator = ' ');
+    void forwardTraverse(char separator = ' ');
+    void reverseTraverse(char separator = ' ');
 
-    Node getHead();
-    Node getTail();
-
-    void addToHead(int data);
+   
 
 private: 
     Node * HEAD;

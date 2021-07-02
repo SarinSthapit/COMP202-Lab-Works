@@ -5,7 +5,6 @@ Roll No.: 55
 Group: Computer Engineering             Level: Undergraduate
        (Year II / Semester I)
 Subject: COMP 202 (Data Structures and Algorithms)
-
 Lab Work 2
 Question No. 2
 */
@@ -19,9 +18,10 @@ class Queue
 {
 
 public:
+    virtual ~Queue(){};
     virtual bool isEmpty() = 0;
     virtual bool isFull() = 0;
-    virtual void enqueue(T value) = 0;
+    virtual void enqueue(T element) = 0;
     virtual T dequeue() = 0;
     virtual T getFront() =0;
     virtual T getBack() = 0;
@@ -35,12 +35,17 @@ class ArrayQueue : public Queue <T>
 private:
     T size;
     T * data;
-    T back;
-    T front;
+    int front;
+    int back;
 
 
 public:
     ArrayQueue(int size): size(size), data(new T[size]), back(-1), front(-1){}
+
+    ~ArrayQueue(){
+        delete [] data;
+        std::cout << "Queue has been deleted." << std::endl;
+    }
 
     bool isEmpty(){
         if(front == back ==-1){
@@ -52,7 +57,7 @@ public:
     }
 
     bool isFull(){
-        if(back = size -1){
+        if(back == size -1){
             return true;
         }
         else{
@@ -61,34 +66,35 @@ public:
     }
 
 
-    void enqueue(T value){
-        if(back == size -1){
-            std ::cout << "The Queue is full." << std :: endl;
+    void enqueue(T element){
+        if(!isFull()){
+            back++;
+            data[back] = element;
+            std :: cout << "Inserted Element: " << element << std :: endl;
         }
         else {
-            back++;
-            data[back] = value;
-            std :: cout << "Inserted Element: " << value << std :: endl;
+            throw "The Queue is full.";
         }
     }
 
     T dequeue(){
         if(isEmpty()){
-            std :: cout << "The Queue is empty" << std :: endl;
+            throw "The Queue is empty";
         }
         else{
-            front = front + 1;
+            front = (front + 1);
             std::cout << "Removed Element: " << data[front] << std::endl;
-            /* data[i] = 0;
-            i++; */
+            return data[front];
         }
     }
 
     T getFront(){
+        std :: cout << "FRONT: ";
         return data[front + 1];
     }
 
     T getBack(){
+        std :: cout << "BACK: ";
         return data[back];
     }
 
@@ -106,4 +112,3 @@ public:
     }
 
 };
- 
