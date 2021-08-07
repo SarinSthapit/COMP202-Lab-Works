@@ -362,6 +362,7 @@ void Graph::randomGraph(){
     
     int t = rand()%20;
     int count = 0;
+    int repeat = 0;
     Vertex *randomtemp1 = new Vertex;
     Vertex *randomtemp2 = new Vertex;
     for(int i = 1; i < t; i++){
@@ -386,12 +387,20 @@ void Graph::randomGraph(){
         for(auto vectorPointer : vectorOfList){
             temp2 = vectorPointer->getHead();
             if(temp2->info == rand()%11){
-                
                 randomtemp2 = temp2;
+                while(temp2 != nullptr){
+                    if(randomtemp1->info == temp2->info){
+                        repeat++;
+                    }
+                    temp2 = temp2 -> next;
+                }   
             }
         }
 
-        this->addEdge(randomtemp1, randomtemp2);
+        if(repeat <=2){
+            this->addEdge(randomtemp1, randomtemp2);
+        }
+        
     }
     this->traverse('-', '>');
 }
