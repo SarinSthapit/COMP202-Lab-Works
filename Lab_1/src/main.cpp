@@ -19,6 +19,11 @@ int main()
     //Demo
     std::cout << "Linked List Operations: " << std::endl;
     LinkedList list;
+     if(list.isEmpty()){
+            std::cout << "The list is empty." << std::endl;
+        }else{
+            std::cout << "The list is not empty." << std::endl;
+        }
 
     list.addToTail(21);
     list.addToTail(19);

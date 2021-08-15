@@ -9,23 +9,27 @@ Subject: COMP 202 (Data Structures and Algorithms)
 Lab Work 4
 */
 
+#pragma once
 #include <iostream>
-#include "LinkedList.h"
+#include "../include/LinkedList.h"
 
-LinkedList::LinkedList()
+template <typename T>
+LinkedList<T>::LinkedList()
 {
     HEAD = nullptr;
     TAIL = nullptr;
 }
 
 
-bool LinkedList::isEmpty(){
+template <typename T>
+bool LinkedList<T>::isEmpty(){
     return HEAD == nullptr && TAIL == nullptr;
 }
 
 
-void LinkedList::addToHead(int data){
-    Vertex *newVertex = new Vertex(data, HEAD);
+template <typename T>
+void LinkedList<T>::addToHead(T data){
+    Vertex<T> *newVertex = new Vertex<T>(data, HEAD);
     HEAD = newVertex;
     if (TAIL == nullptr)
     {
@@ -35,8 +39,9 @@ void LinkedList::addToHead(int data){
 }
 
 
-void LinkedList::addToTail(int data){
-    Vertex *newVertex = new Vertex(data, NULL);
+template <typename T>
+void LinkedList<T>::addToTail(T data){
+    Vertex<T> *newVertex = new Vertex<T>(data, NULL);
     if(HEAD == nullptr)
     {
         HEAD = newVertex;
@@ -52,17 +57,19 @@ void LinkedList::addToTail(int data){
 }
 
 
-void LinkedList::add(int data, Vertex *predecessor){
-    Vertex *newVertex = new Vertex(data, predecessor->next);
+template <typename T>
+void LinkedList<T>::add(T data, Vertex<T> *predecessor){
+    Vertex<T> *newVertex = new Vertex<T>(data, predecessor->next);
     predecessor -> next = newVertex;
     std::cout << "Added: " << data << std::endl;
 }
 
 
-int LinkedList::removeFromHead(){
+template <typename T>
+T LinkedList<T>::removeFromHead(){
     if (!this->isEmpty())
     {
-        Vertex *vertexToDelete = new Vertex;
+        Vertex<T> *vertexToDelete = new Vertex<T>;
         vertexToDelete = this -> HEAD;
         int data = vertexToDelete->info;
         this->HEAD = vertexToDelete->next;
@@ -84,9 +91,10 @@ int LinkedList::removeFromHead(){
 }
 
 
-int LinkedList :: removeFromTail(){
+template <typename T>
+T LinkedList<T>:: removeFromTail(){
     if(!this->isEmpty()){
-        Vertex *vertexToDelete = new Vertex;
+        Vertex<T> *vertexToDelete = new Vertex<T>;
         vertexToDelete = this -> TAIL;
         TAIL -> next = NULL;
 
@@ -96,7 +104,7 @@ int LinkedList :: removeFromTail(){
         }
 
         else{
-            Vertex *secondlastVertex = new Vertex;
+            Vertex<T> *secondlastVertex = new Vertex<T>;
             secondlastVertex = this -> HEAD;
             while(secondlastVertex -> next != TAIL){
                 secondlastVertex = secondlastVertex -> next;
@@ -117,9 +125,10 @@ int LinkedList :: removeFromTail(){
 }
 
 
-void LinkedList :: remove(int data){
-    Vertex *current = new Vertex;
-    Vertex * previous = new Vertex;
+template <typename T>
+void LinkedList<T>:: remove(T data){
+    Vertex<T> *current = new Vertex<T>;
+    Vertex<T> * previous = new Vertex<T>;
     current = HEAD -> next;
     previous = HEAD;
 
@@ -147,8 +156,9 @@ void LinkedList :: remove(int data){
 } 
 
 
-Vertex *LinkedList::retrieve(int data, Vertex *outputVertexPointer){
-    Vertex *temp = new Vertex;
+template <typename T>
+Vertex<T> *LinkedList<T>::retrieve(T data, Vertex<T> *outputVertexPointer){
+    Vertex<T> *temp = new Vertex<T>;
     temp = HEAD;
     while(temp != NULL && temp -> info != data){
         temp = temp -> next;
@@ -166,9 +176,10 @@ Vertex *LinkedList::retrieve(int data, Vertex *outputVertexPointer){
 }
 
 
-bool LinkedList::search(int data){
+template <typename T>
+bool LinkedList<T>::search(T data){
     if(!this -> isEmpty()){
-        Vertex *newVertex = new Vertex;
+        Vertex<T> *newVertex = new Vertex<T>;
         newVertex = HEAD;
 
         while(newVertex -> next != NULL){
@@ -190,13 +201,14 @@ bool LinkedList::search(int data){
 }
 
 
-void LinkedList::traverse(char separator){
+template <typename T>
+void LinkedList<T>::traverse(char separator){
     if(isEmpty()){
         std::cout << "The list is empty." << std::endl;
     }
 
     else{
-        Vertex *temp = HEAD;
+        Vertex<T> *temp = HEAD;
 
         while (temp != nullptr){
             std :: cout << temp -> info << separator;
@@ -206,10 +218,12 @@ void LinkedList::traverse(char separator){
     std::cout << std::endl;
 }
 
-Vertex* LinkedList :: getHead(){
+template <typename T>
+Vertex<T> *LinkedList<T>:: getHead(){
     return HEAD;
 }
 
-Vertex* LinkedList :: getTail(){
+template <typename T>
+Vertex<T> *LinkedList<T>:: getTail(){
     return TAIL;
 }

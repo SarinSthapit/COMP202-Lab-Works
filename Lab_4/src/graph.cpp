@@ -9,12 +9,13 @@ Subject: COMP 202 (Data Structures and Algorithms)
 Lab Work 4
 */
 
+#pragma once
 #include <iostream>
 #include "../include/graph.h"
 #include "../include/LinkedList.h"
 
-
-bool Graph::isEmpty() {
+template <typename T>
+bool Graph<T>::isEmpty() {
    if(vectorOfList.empty()){
        return true;
    }else{
@@ -23,7 +24,8 @@ bool Graph::isEmpty() {
 }
 
 
-bool Graph::isDirected() {
+template <typename T>
+bool Graph<T>::isDirected() {
     if(isDirectedGraph){
         return true;
     }else{
@@ -32,12 +34,13 @@ bool Graph::isDirected() {
 }
 
 
-void Graph::addVertex(Vertex *newVertex) {
+template <typename T>
+void Graph<T>::addVertex(Vertex<T> *newVertex) {
    if(this->isVertex(newVertex)){
        throw "The Vertex already exists.";
    } 
 
-   LinkedList *list = new LinkedList;
+   LinkedList<T> *list = new LinkedList<T>;
    list->addToTail(newVertex->info);
    vectorOfList.emplace_back(list);
    numV++;
@@ -45,7 +48,8 @@ void Graph::addVertex(Vertex *newVertex) {
 }
 
 
-void Graph::addEdge(Vertex *vertex1, Vertex *vertex2) {
+template <typename T>
+void Graph<T>::addEdge(Vertex<T> *vertex1, Vertex<T> *vertex2) {
     if(!this->isVertex(vertex1)){
        throw "The first vertex does not exists.";
     } 
@@ -55,10 +59,10 @@ void Graph::addEdge(Vertex *vertex1, Vertex *vertex2) {
     } 
 
     for(auto vectorPointer : vectorOfList){
-    Vertex *tempVertex1 =new Vertex;
+    Vertex<T> *tempVertex1 =new Vertex<T>;
     tempVertex1 = vectorPointer->getHead();
 
-    Vertex *tempVertex2 =new Vertex;
+    Vertex<T> *tempVertex2 =new Vertex<T>;
     tempVertex2 = vectorPointer->getHead();
 
         if(tempVertex1->info == vertex1->info){
@@ -78,7 +82,8 @@ void Graph::addEdge(Vertex *vertex1, Vertex *vertex2) {
 }
 
 
-void Graph::removeVertex(Vertex *vertexToRemove) {
+template <typename T>
+void Graph<T>::removeVertex(Vertex<T> *vertexToRemove) {
     int count = 0;
 
     if(!this->isVertex(vertexToRemove)){
@@ -88,9 +93,9 @@ void Graph::removeVertex(Vertex *vertexToRemove) {
         
         throw"The Graph is empty.\n";
     }else{
-        std::vector<LinkedList *>::iterator vectorPointer;
+        typename std::vector<LinkedList<T> *>::iterator vectorPointer;
         for(vectorPointer = vectorOfList.begin(); vectorPointer !=vectorOfList.end(); vectorPointer++){
-            Vertex *tempVertex =new Vertex;
+            Vertex<T> *tempVertex =new Vertex<T>;
             tempVertex = (*vectorPointer)->getHead();
 
             if(tempVertex->info == vertexToRemove->info){
@@ -99,7 +104,7 @@ void Graph::removeVertex(Vertex *vertexToRemove) {
         }
         for(auto vectorPointer : vectorOfList){
             
-            Vertex *tempVertex2 = new Vertex;
+            Vertex<T> *tempVertex2 = new Vertex<T>;
             tempVertex2 = vectorPointer->getHead();
             while(tempVertex2 != NULL){
                 if(tempVertex2->info == vertexToRemove->info){
@@ -114,7 +119,8 @@ void Graph::removeVertex(Vertex *vertexToRemove) {
 }
 
 
-void Graph::removeEdge(Vertex *vertex1, Vertex *vertex2) {
+template <typename T>
+void Graph<T>::removeEdge(Vertex<T> *vertex1, Vertex<T> *vertex2) {
     if(!this->isVertex(vertex1)){
        throw "The first vertex does not exists.\n";
     } 
@@ -124,16 +130,16 @@ void Graph::removeEdge(Vertex *vertex1, Vertex *vertex2) {
     } 
 
     for(auto vectorPointer : vectorOfList){
-        Vertex *tempVertex =new Vertex;
+        Vertex<T> *tempVertex =new Vertex<T>;
         tempVertex = vectorPointer->getHead();
 
         if(tempVertex->info == vertex1->info){
-            Vertex *newVertex =new Vertex;
+            Vertex<T> *newVertex =new Vertex<T>;
             newVertex = vectorPointer->getHead();
             while(newVertex != nullptr){
                 if(newVertex->info == vertex2->info){
                     vectorPointer->remove(vertex2->info);
-                    std::cout << "Removed Edge from" << vertex1->info <<" to " << vertex2->info << "\n" << std::endl;
+                    std::cout << "Removed Edge from " << vertex1->info <<" to " << vertex2->info << "\n" << std::endl;
                     numE--;
                     break;
                 }
@@ -143,12 +149,12 @@ void Graph::removeEdge(Vertex *vertex1, Vertex *vertex2) {
 
         if(!this->isDirected()){
             if(tempVertex->info == vertex2->info){
-            Vertex *newVertex =new Vertex;
+            Vertex<T> *newVertex =new Vertex<T>;
             newVertex = vectorPointer->getHead();
             while(newVertex != nullptr){
                 if(newVertex->info == vertex1->info){
                     vectorPointer->remove(vertex1->info);
-                     std::cout << "Removed Edge between" << vertex1->info <<" to " << vertex2->info << "\n" << std::endl;
+                     std::cout << "Removed Edge between " << vertex1->info <<" to " << vertex2->info << "\n" << std::endl;
                     numE--;
                     break;
                 }
@@ -160,20 +166,21 @@ void Graph::removeEdge(Vertex *vertex1, Vertex *vertex2) {
 }
 
 
-int Graph::numEdges() {
+template <typename T>
+int Graph<T>::numEdges() {
     std::cout << "The number of edges are: " << numE << std::endl;
     return numE; 
 }
 
-
-int Graph::indegree(Vertex *vertex) {
+template <typename T>
+int Graph<T>::indegree(Vertex<T> *vertex) {
     if(!this->isVertex(vertex)){
        throw "The vertex does not exists.";
     }
     if(!this->isDirected()){
         int count = 0;
         for(auto vectorPointer: vectorOfList){
-        Vertex *tempVertex = new Vertex;
+        Vertex<T> *tempVertex = new Vertex<T>;
         tempVertex = vectorPointer->getHead();
             if(tempVertex->info == vertex->info){
                 while(tempVertex != nullptr){
@@ -182,12 +189,12 @@ int Graph::indegree(Vertex *vertex) {
                 }
             }
         }
-        std::cout << "The indegree of given vertex is: " << count << "\n" << std::endl;
+        std::cout << "The indegree of " << vertex->info << " is: " << count << "\n" << std::endl;
         return count;
     }else{
         int count = -1;
         for(auto vectorPointer: vectorOfList){
-            Vertex *tempVertex = new Vertex;
+            Vertex<T> *tempVertex = new Vertex<T>;
             tempVertex = vectorPointer->getHead();
             while(tempVertex != nullptr){
                 if(tempVertex->info == vertex->info){
@@ -196,20 +203,21 @@ int Graph::indegree(Vertex *vertex) {
                 tempVertex = tempVertex -> next;
             }
         }
-        std::cout << "The indegree of given vertex is: " << count << "\n" << std::endl;
+        std::cout << "The indegree of " << vertex->info << " is: " << count << "\n" << std::endl;
         return count;
     }
 }
 
 
-int Graph::outdegree(Vertex *vertex) {
+template <typename T>
+int Graph<T>::outdegree(Vertex<T> *vertex) {
     if(!this->isVertex(vertex)){
        throw "The vertex does not exists.";
     }
 
     int count =0;
     for(auto vectorPointer: vectorOfList){
-        Vertex *tempVertex = new Vertex;
+        Vertex<T> *tempVertex = new Vertex<T>;
         tempVertex = vectorPointer->getHead();
         if(tempVertex->info == vertex->info){
             while(tempVertex != nullptr){
@@ -218,12 +226,13 @@ int Graph::outdegree(Vertex *vertex) {
             }
         }
     }
-    std::cout << "The outdegree of given vertex is: " << count << "\n" << std::endl;
+    std::cout << "The outdegree of " << vertex->info << " is: " << count << "\n" << std::endl;
     return count;
 }
 
 
-int Graph::degree(Vertex *vertex) {
+template <typename T>
+int Graph<T>::degree(Vertex<T> *vertex) {
     if(!this->isVertex(vertex)){
        throw "The vertex does not exists.";
     }
@@ -231,26 +240,28 @@ int Graph::degree(Vertex *vertex) {
     if(!this->isDirected()){
         int count = 0;
         count = this->outdegree(vertex);
-        std::cout << "The degree of given vertex is: " << count << "\n" << std::endl;
+        std::cout << "The degree of " << vertex->info << " is: " << count << "\n" << std::endl;
         return count;
     }else{
         int count = 0;
         count = this->indegree(vertex) + this->outdegree(vertex);
-        std::cout << "The degree of given vertex is: " << count << "\n" << std::endl;
+        std::cout << "The degree of " << vertex->info << " is: " << count << "\n" << std::endl;
         return count;
     }
 }
 
-void Graph::neighbours(Vertex *vertex) {
+
+template <typename T>
+void Graph<T>::neighbours(Vertex<T> *vertex) {
     if(!this->isVertex(vertex)){
        throw "The vertex does not exists.";
     }
 
     for(auto vectorPointer : vectorOfList){
-        Vertex *tempVertex =new Vertex;
+        Vertex<T> *tempVertex =new Vertex<T>;
         tempVertex = vectorPointer->getHead();
 
-        Vertex *tempVertex2 =new Vertex;
+        Vertex<T> *tempVertex2 =new Vertex<T>;
         tempVertex2 = vectorPointer->getHead();
 
         if(tempVertex->info == vertex->info){
@@ -277,7 +288,8 @@ void Graph::neighbours(Vertex *vertex) {
 }
 
 
-bool Graph::neighbour(Vertex *vertex1, Vertex *vertex2) {
+template <typename T>
+bool Graph<T>::neighbour(Vertex<T> *vertex1, Vertex<T> *vertex2) {
     if(!this->isVertex(vertex1)){
        throw "The first vertex does not exists.";
     } 
@@ -286,10 +298,10 @@ bool Graph::neighbour(Vertex *vertex1, Vertex *vertex2) {
        throw "The second vertex does not exists.";
     } 
     for(auto vectorPointer : vectorOfList){
-        Vertex *tempVertex =new Vertex;
+        Vertex<T> *tempVertex =new Vertex<T>;
         tempVertex = vectorPointer->getHead();
 
-        Vertex *tempVertex2 =new Vertex;
+        Vertex<T> *tempVertex2 =new Vertex<T>;
         tempVertex2 = vectorPointer->getHead();
         if(tempVertex->info == vertex1->info){
             while(tempVertex != nullptr){
@@ -315,14 +327,18 @@ bool Graph::neighbour(Vertex *vertex1, Vertex *vertex2) {
     return false;
 }
 
-int Graph::numVertices() {
+
+template <typename T>
+int Graph<T>::numVertices() {
     std::cout << "The number of vertices are: " << numV << "\n" << std::endl;
     return numV; 
 }
 
-bool Graph::isVertex(Vertex *vertex){
+
+template <typename T>
+bool Graph<T>::isVertex(Vertex<T> *vertex){
     for(auto vectorPointer : vectorOfList){
-        Vertex *temp = new Vertex;
+        Vertex<T> *temp = new Vertex<T>;
         temp = vectorPointer->getHead();
         if(temp->info == vertex->info){
             return true;
@@ -332,14 +348,16 @@ bool Graph::isVertex(Vertex *vertex){
     return false;
 }
 
-void Graph::traverse(char separator1, char separator2){
+
+template <typename T>
+void Graph<T>::traverse(char separator1, char separator2){
     if(isEmpty()){
         throw"The Graph is empty.";
     }
 
     std::cout << "GRAPH:" << std::endl;
     for(auto vectorPointer : vectorOfList){
-        Vertex *temp = new Vertex;
+        Vertex<T> *temp = new Vertex<T>;
         temp = vectorPointer -> getHead();
         while(temp != nullptr){
             if(this->isDirected()){
@@ -356,17 +374,17 @@ void Graph::traverse(char separator1, char separator2){
 }
 
 
-
-void Graph::randomGraph(){
+template <typename T>
+void Graph<T>::randomGraph(){
     std::cout << "\nRANDOM GRAPH:" << std::endl;
     
     int t = rand()%20;
     int count = 0;
     int repeat = 0;
-    Vertex *randomtemp1 = new Vertex;
-    Vertex *randomtemp2 = new Vertex;
+    Vertex<T> *randomtemp1 = new Vertex<T>;
+    Vertex<T> *randomtemp2 = new Vertex<T>;
     for(int i = 1; i < t; i++){
-        Vertex *a = new Vertex(i, nullptr);
+        Vertex<T> *a = new Vertex<T>(i, nullptr);
         if(!isVertex(a)){
             this->addVertex(a);
             count++;
@@ -374,8 +392,8 @@ void Graph::randomGraph(){
     }
 
     for(int j= 1; j<count; j++){
-        Vertex *temp1 = new Vertex;
-        Vertex *temp2 = new Vertex;
+        Vertex<T> *temp1 = new Vertex<T>;
+        Vertex<T> *temp2 = new Vertex<T>;
 
         for(auto vectorPointer : vectorOfList){   
             temp1 = vectorPointer->getHead();

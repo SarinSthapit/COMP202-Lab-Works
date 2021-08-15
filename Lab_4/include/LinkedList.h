@@ -12,37 +12,41 @@ Lab Work 4
 #pragma once
 #include <iostream>
 
+template <typename T>
 class Vertex {
 public:
-    int info;
+    T info;
     Vertex *next;
 
     Vertex() : next(nullptr) {}
-    Vertex(int info, Vertex *next) : info(info), next(nullptr){}
+    Vertex(T info, Vertex *next) : info(info), next(nullptr){}
 };
 
 
 
+template <typename T>
 class LinkedList{
 
 public:
     LinkedList();
     
     bool isEmpty();
-    void addToHead(int data);
-    void addToTail(int data);
-    void add(int data, Vertex *predecessor);
-    int removeFromHead();
-    int removeFromTail();
-    void remove(int data);
-    Vertex *retrieve(int data, Vertex *outputVertexPointer);
-    bool search(int data);
+    void addToHead(T data);
+    void addToTail(T data);
+    void add(T data, Vertex<T> *predecessor);
+    T removeFromHead();
+    T removeFromTail();
+    void remove(T data);
+    Vertex<T> *retrieve(T data, Vertex<T> *outputVertexPointer);
+    bool search(T data);
     void traverse(char separator = ' ');
 
-    Vertex* getHead();
-    Vertex* getTail();
+    Vertex<T> *getHead();
+    Vertex<T> * getTail();
    
 private: 
-    Vertex * HEAD;
-    Vertex * TAIL;
+    Vertex<T> *HEAD;
+    Vertex<T> *TAIL;
 };
+
+#include "../src/LinkedList.cpp"

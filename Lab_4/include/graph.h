@@ -14,30 +14,33 @@ Lab Work 4
 #include <vector>
 #include "LinkedList.h"
 
+template <typename T>
 class Graph {
 public:
     Graph(bool isDirectedGraph) : isDirectedGraph(isDirectedGraph) {}
     bool isEmpty();
     bool isDirected();
-    void addVertex(Vertex *newVertex);
-    void addEdge(Vertex *vertex1, Vertex *vertex2);
-    void removeVertex(Vertex *vertexToRemove);
-    void removeEdge(Vertex *vertex1, Vertex *vertex2);
+    void addVertex(Vertex <T> *newVertex);
+    void addEdge(Vertex <T>*vertex1, Vertex<T> *vertex2);
+    void removeVertex(Vertex<T> *vertexToRemove);
+    void removeEdge(Vertex<T> *vertex1, Vertex<T> *vertex2);
     int numVertices();
     int numEdges();
-    int indegree(Vertex *vertex);
-    int outdegree(Vertex *vertex);
-    int degree(Vertex *vertex);
-    void neighbours(Vertex *vertex);
-    bool neighbour(Vertex *vertex1, Vertex *vertex2);
+    int indegree(Vertex<T> *vertex);
+    int outdegree(Vertex<T> *vertex);
+    int degree(Vertex<T> *vertex);
+    void neighbours(Vertex<T> *vertex);
+    bool neighbour(Vertex<T> *vertex1, Vertex<T> *vertex2);
 
-    bool isVertex(Vertex *vertex);
+    bool isVertex(Vertex<T> *vertex);
     void traverse(char separator1, char separator2);
     void randomGraph();
 
 private:
-    std::vector<LinkedList*> vectorOfList;
+    std::vector<LinkedList<T>*> vectorOfList;
     bool isDirectedGraph;
     int numV = 0;
     int numE = 0;
 };
+
+#include "../src/graph.cpp"
