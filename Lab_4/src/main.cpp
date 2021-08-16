@@ -9,8 +9,10 @@ Subject: COMP 202 (Data Structures and Algorithms)
 Lab Work 4
 */
 
+
 //g++ ../src/main.cpp -I ../include/
 //./a.exe
+
 
 #include <iostream>
 #include "../include/LinkedList.h"
