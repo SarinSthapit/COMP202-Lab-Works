@@ -9,8 +9,6 @@ Subject: COMP 202 (Data Structures and Algorithms)
 Lab Work 4
 */
 
-//cd Lab_4
-//cd build
 //g++ ../src/main.cpp -I ../include/
 //./a.exe
 
