@@ -397,25 +397,19 @@ void Graph<T>::randomGraph(){
 
         for(auto vectorPointer : vectorOfList){   
             temp1 = vectorPointer->getHead();
-            if(temp1->info == rand()%10){
+            if(temp1->info == rand() % 10){
                 randomtemp1 = temp1;
             }
         }
 
         for(auto vectorPointer : vectorOfList){
             temp2 = vectorPointer->getHead();
-            if(temp2->info == rand()%11){
-                randomtemp2 = temp2;
-                while(temp2 != nullptr){
-                    if(randomtemp1->info == temp2->info){
-                        repeat++;
-                    }
-                    temp2 = temp2 -> next;
-                }   
+            if(temp2->info == rand() % 9){
+                randomtemp2 = temp2;   
             }
         }
-
-        if(repeat <=2){
+        
+        if(!neighbour(randomtemp1, randomtemp2)){
             this->addEdge(randomtemp1, randomtemp2);
         }
         
