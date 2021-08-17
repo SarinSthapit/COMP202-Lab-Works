@@ -17,7 +17,6 @@ class Vertex {
 public:
     T info;
     Vertex<T> *next;
-
     Vertex() : next(nullptr) {}
     Vertex(T info, Vertex *next) : info(info), next(nullptr){}
 };
