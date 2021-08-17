@@ -16,7 +16,7 @@ template <typename T>
 class Vertex {
 public:
     T info;
-    Vertex *next;
+    Vertex<T> *next;
 
     Vertex() : next(nullptr) {}
     Vertex(T info, Vertex *next) : info(info), next(nullptr){}
